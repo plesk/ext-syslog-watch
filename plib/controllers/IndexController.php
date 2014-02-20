@@ -9,7 +9,6 @@ class IndexController extends pm_Controller_Action
 
         $this->view->tools = [[
             'title' => 'Reload',
-            'description' => '',
             'class' => 'sb-refresh',
             'link' => pm_Context::getBaseUrl(),
         ]];
