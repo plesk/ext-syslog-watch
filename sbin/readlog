@@ -1,0 +1,3 @@
+#!/bin/sh
+
+tail -20 /var/log/syslog
