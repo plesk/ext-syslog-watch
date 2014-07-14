@@ -1,12 +1,21 @@
 #!/bin/sh
 
 LINES=$1
+FROM=$2
 
 if [ -f /var/log/syslog ]
 then
   SYSLOG=/var/log/syslog
 else
   SYSLOG=/var/log/messages
+fi
+
+TOTAL=$(wc -l $SYSLOG | awk '{print($1)}')
+echo $TOTAL
+
+if [ ! -z $FROM ]
+then
+    LINES=$(( TOTAL - FROM ))
 fi
 
 tail -n $LINES $SYSLOG

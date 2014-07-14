@@ -8,8 +8,7 @@
 
 <script>
     var reloadSysLog = function() {
-        var lines = $('lines').getValue();
-        document.location.href = '<?php pm_Context::getBaseUrl() ?>?lines=' + lines;
+        Jsw.submit('<?php echo $this->form->getId() ?>');
     };
 
     Jsw.onReady(function() {
@@ -22,5 +21,36 @@
         };
         resizeBlock();
         Event.observe(window, 'resize', resizeBlock);
+
+        var total = <?php echo (int)$this->total ?>;
+        var inProgress = false;
+        var appendLog = function() {
+            if (inProgress || !$('autoUpdate').checked) {
+                return;
+            }
+
+            new Ajax.Request('<?php echo pm_Context::getActionUrl('index', 'data') ?>', {
+                method: 'post',
+                parameters: { from: total },
+                onCreate: function() {
+                    inProgress = true;
+                },
+                onComplete: function() {
+                    inProgress = false;
+                },
+                onSuccess: function(transport) {
+                    var logData = transport.responseText;
+                    logData = logData.strip();
+                    var logDataLines = logData.split("\n", 2);
+                    total = parseInt(logDataLines[0]);
+                    var content = logDataLines[1];
+                    if (content.length) {
+                        content = "\n" + content;
+                        syslog.insert({ bottom: content });
+                    }
+                }
+            });
+        };
+        setInterval(appendLog, 1000);
     });
 </script>
