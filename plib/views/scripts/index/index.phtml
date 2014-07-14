@@ -1,7 +1,26 @@
+<?php echo $this->form ?>
+
 <?php echo $this->renderSmallTools($this->tools); ?>
 
-<div>Last lines from syslog:</div>
-
-<div style="overflow: scroll; white-space: pre;">
+<div id="syslog" style="overflow: scroll; white-space: pre;">
 <?php echo $this->content; ?>
 </div>
+
+<script>
+    var reloadSysLog = function() {
+        var lines = $('lines').getValue();
+        document.location.href = '<?php pm_Context::getBaseUrl() ?>?lines=' + lines;
+    };
+
+    Jsw.onReady(function() {
+        var syslog = $('syslog');
+        var resizeBlock = function() {
+            var bodyHeight = $(document.body).getHeight();
+            var blockTop = Position.cumulativeOffset(syslog).top;
+            var blockBottom = $('footer-wrapper') ? $('footer-wrapper').getHeight() : 0;
+            syslog.setStyle({ 'max-height': (bodyHeight - blockTop - blockBottom) + 'px' });
+        };
+        resizeBlock();
+        Event.observe(window, 'resize', resizeBlock);
+    });
+</script>

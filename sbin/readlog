@@ -1,8 +1,12 @@
 #!/bin/sh
 
+LINES=$1
+
 if [ -f /var/log/syslog ]
 then
-  tail -20 /var/log/syslog
+  SYSLOG=/var/log/syslog
 else
-  tail -20 /var/log/messages
+  SYSLOG=/var/log/messages
 fi
+
+tail -n $LINES $SYSLOG
