@@ -1,3 +1,8 @@
 #!/bin/sh
 
-tail -20 /var/log/syslog
+if [ -f /var/log/syslog ]
+then
+  tail -20 /var/log/syslog
+else
+  tail -20 /var/log/messages
+fi
