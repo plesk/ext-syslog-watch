@@ -6,7 +6,7 @@ class IndexController extends pm_Controller_Action
 
     public function indexAction()
     {
-        $this->view->pageTitle = 'Syslog Watch';
+        $this->view->pageTitle = $this->lmsg('pageTitle');
 
         $lines = (int)$this->_getParam('lines', 20);
 
@@ -16,16 +16,16 @@ class IndexController extends pm_Controller_Action
         $form->setEnctype(pm_Form_Simple::ENCTYPE_MULTIPART);
         $form->addElement('text', 'lines', [
             'value' => $lines,
-            'label' => 'Lines of log file to be displayed (from the end of the file)',
+            'label' => $this->lmsg('lines'),
         ]);
         $form->addElement('checkbox', 'autoUpdate', [
             'value' => (bool)$this->_getParam('autoUpdate', true),
-            'label' => 'Automatically append log content'
+            'label' => $this->lmsg('autoUpdate'),
         ]);
         $this->view->form = $form;
 
         $this->view->tools = [[
-            'title' => 'Reload',
+            'title' => $this->lmsg('reload'),
             'class' => 'sb-refresh',
             'link' => 'javascript:reloadSysLog()',
         ]];
