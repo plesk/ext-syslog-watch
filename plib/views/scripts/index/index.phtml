@@ -22,6 +22,11 @@
         resizeBlock();
         Event.observe(window, 'resize', resizeBlock);
 
+        var scrollBottom = function() {
+            syslog.scrollTop = syslog.scrollHeight;
+        };
+        scrollBottom();
+
         var total = <?php echo (int)$this->total ?>;
         var inProgress = false;
         var appendLog = function() {
@@ -47,6 +52,7 @@
                     if (content.length) {
                         content = "\n" + content;
                         syslog.insert({ bottom: content });
+                        scrollBottom();
                     }
                 }
             });
