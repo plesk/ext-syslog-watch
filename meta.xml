@@ -6,7 +6,7 @@
   <description>Shows last lines in syslog</description>
   <version>1.2</version>
   <release>0</release>
-  <vendor>Odin</vendor>
+  <vendor>Plesk</vendor>
   <plesk_min_version>12.0</plesk_min_version>
   <os>unix</os>
 </module>
