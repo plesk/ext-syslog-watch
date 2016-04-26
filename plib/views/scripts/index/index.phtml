@@ -6,7 +6,7 @@
 <?php echo $this->renderSmallTools($this->tools); ?>
 
 <div id="syslog" style="overflow: scroll; white-space: pre; font-family: monospace;">
-<?php echo $this->content; ?>
+<?php echo $this->escape($this->content); ?>
 </div>
 
 <script>
@@ -54,7 +54,7 @@
                     var content = logDataLines[1];
                     if (content.length) {
                         content = "\n" + content;
-                        syslog.insert({ bottom: content });
+                        syslog.insert({ bottom: content.escapeHTML() });
                         scrollBottom();
                     }
                 }
