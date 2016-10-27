@@ -2,4 +2,4 @@ Syslog is a way for network devices to send event messages to a logging server. 
 
 Syslog messages usually include information to help identify basic information about where, when, and why the log was sent: IP address, timestamp, and the actual log message. Messages are sometimes in a descriptive, human-readable format.
 
-This extension reads your syslog file and outputs the last %%number%% messages present in the file. You can refresh the page to see if there are any new events logged by syslog.
+This extension reads your syslog file and outputs the last 20 messages present in the file. You can refresh the page to see if there are any new events logged by syslog.
