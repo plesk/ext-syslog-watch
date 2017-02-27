@@ -4,6 +4,7 @@
   <id>syslog-watch</id>
   <name>Syslog Watch</name>
   <description>Shows last lines in syslog</description>
+  <url>https://github.com/plesk/ext-syslog-watch</url>
   <version>1.2</version>
   <release>2</release>
   <vendor>Plesk</vendor>
