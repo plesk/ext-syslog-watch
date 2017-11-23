@@ -1,5 +1,0 @@
-Syslog is a way for network devices to send event messages to a logging server. It's a great way to consolidate logs from multiple sources into a single location. The Syslog protocol is supported by a wide range of devices and can be used to log different types of events.
-
-Syslog messages usually include information to help identify basic information about where, when, and why the log was sent: IP address, timestamp, and the actual log message. Messages are sometimes in a descriptive, human-readable format.
-
-This extension reads your syslog file and outputs the last 20 messages present in the file. You can refresh the page to see if there are any new events logged by syslog.
