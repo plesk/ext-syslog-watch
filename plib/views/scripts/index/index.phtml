@@ -52,7 +52,7 @@
                     var logDataLines = logData.split("\n", 2);
                     total = parseInt(logDataLines[0]);
                     var content = logDataLines[1];
-                    if (content.length) {
+                    if (content !== undefined && content.length) {
                         content = "\n" + content;
                         syslog.insert({ bottom: content.escapeHTML() });
                         scrollBottom();
