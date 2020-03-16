@@ -19,7 +19,8 @@
         var resizeBlock = function() {
             var bodyHeight = $(document.body).getHeight();
             var blockTop = Position.cumulativeOffset(syslog).top;
-            var blockBottom = $('footer-wrapper') ? $('footer-wrapper').getHeight() : 0;
+            var footerWrapper = $('footer-wrapper');
+            var blockBottom = footerWrapper ? footerWrapper.getHeight() : 0;
             syslog.setStyle({ 'max-height': (bodyHeight - blockTop - blockBottom) + 'px' });
         };
         resizeBlock();
